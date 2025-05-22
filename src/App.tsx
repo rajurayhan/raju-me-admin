@@ -25,6 +25,7 @@ import PortfolioList from './pages/Portfolios/PortfolioList';
 import CreatePortfolio from './pages/Portfolios/CreatePortfolio';
 import EditPortfolio from './pages/Portfolios/EditPortfolio';
 import GenerateContent from './pages/AIContent/GenerateContent';
+import { AppWrapper } from "./components/common/PageMeta";
 
 function PrivateRoute() {
   const token = localStorage.getItem("token");
@@ -33,7 +34,7 @@ function PrivateRoute() {
 
 export default function App() {
   return (
-    <>
+    <AppWrapper>
       <Router>
         <ScrollToTop />
         <Routes>
@@ -76,6 +77,6 @@ export default function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
-    </>
+    </AppWrapper>
   );
 }
