@@ -12,6 +12,7 @@ interface CreatePortfolioFormData {
   liveUrl: string;
   githubUrl: string;
   technologies: string;
+  category: string;
   isPublished: boolean;
 }
 
@@ -23,6 +24,7 @@ const CreatePortfolio = () => {
     liveUrl: '',
     githubUrl: '',
     technologies: '',
+    category: '',
     isPublished: false,
   });
   const [loading, setLoading] = useState(false);
@@ -44,6 +46,7 @@ const CreatePortfolio = () => {
         const techArray = formData.technologies.split(',').map(t => t.trim()).filter(Boolean);
         techArray.forEach(t => formDataToSend.append('technologies', t));
       }
+      if (formData.category) formDataToSend.append('category', formData.category);
       if (formData.image) {
         formDataToSend.append('image', formData.image);
       }
@@ -55,6 +58,7 @@ const CreatePortfolio = () => {
         liveUrl: formData.liveUrl,
         githubUrl: formData.githubUrl,
         technologies: formData.technologies,
+        category: formData.category,
         hasImage: !!formData.image,
         imageName: formData.image?.name,
         isPublished: formData.isPublished
@@ -244,6 +248,23 @@ const CreatePortfolio = () => {
                 onChange={handleChange}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                 placeholder="React, Node.js, TypeScript"
+              />
+            </div>
+            <div className="mb-6">
+              <label
+                htmlFor="category"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
+                Category
+              </label>
+              <input
+                type="text"
+                id="category"
+                name="category"
+                value={formData.category}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                placeholder="Web Development, Mobile App, etc."
               />
             </div>
             <div className="mb-6">
