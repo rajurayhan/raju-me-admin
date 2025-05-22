@@ -4,12 +4,8 @@ import { Link, useLocation } from "react-router";
 // Assume these icons are imported from an icon library
 import {
   ChevronDownIcon,
-  PageIcon,
   BoxCubeIcon,
-  ShootingStarIcon,
   ListIcon,
-  DocsIcon,
-  BoltIcon,
   HorizontaLDots,
 } from "../icons";
 import { useSidebar } from "../context/SidebarContext";

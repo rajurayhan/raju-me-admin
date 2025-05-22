@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { ChevronLeftIcon, EyeCloseIcon, EyeIcon } from "../../icons";
+import { useNavigate } from "react-router-dom";
+import { EyeCloseIcon, EyeIcon } from "../../icons";
 import Label from "../form/Label";
 import Input from "../form/input/InputField";
 import Checkbox from "../form/input/Checkbox";
 import Button from "../ui/button/Button";
+import { config } from "../../config";
 
 export default function SignInForm() {
   const [showPassword, setShowPassword] = useState(false);
@@ -20,9 +21,13 @@ export default function SignInForm() {
     setLoading(true);
     setError("");
     try {
-      const response = await fetch("http://localhost:3000/auth/login", {
+      const response = await fetch(`${config.apiBaseUrl}/auth/login`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        credentials: 'include',
         body: JSON.stringify({ email, password }),
       });
       const data = await response.json();

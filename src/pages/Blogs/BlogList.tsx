@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { PlusIcon, PencilIcon, TrashBinIcon, ChevronLeftIcon, ArrowRightIcon } from '../../icons';
 import { config } from '../../config';
